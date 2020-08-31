@@ -11,6 +11,5 @@ public interface ISupplierService {
 
     void removeById(String id);
     List<Supplier> allSuppliers();
-    public boolean authentication(String id,String password);
 
 }

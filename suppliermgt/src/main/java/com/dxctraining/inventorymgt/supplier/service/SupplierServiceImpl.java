@@ -44,17 +44,5 @@ public class SupplierServiceImpl implements ISupplierService {
 		return allsuppliers;
 	}
 
-	@Override
-	public boolean authentication(String id, String password) {
-		Optional<Supplier> optional = dao.findById(id);
-		boolean exist=optional.isPresent();
-		if(!exist) {
-			throw new SupplierNotFoundException("Supplier not found"+id);
-		}
-		Supplier supplier=optional.get();
-		String storedPassword = supplier.getPassword();
-		boolean equals = storedPassword.equals(password);
-		return equals;
-	}
 
 }
