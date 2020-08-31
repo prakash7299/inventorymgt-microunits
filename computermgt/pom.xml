@@ -8,7 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>computer management</name>
+    <name>computermgt</name>
     <description>service which manages computer</description>
 
     <parent>
