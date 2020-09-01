@@ -11,13 +11,15 @@ import com.dxctraining.inventorymgt.supplier.entities.Supplier;
 import com.dxctraining.inventorymgt.supplier.exceptions.InvalidArgumentException;
 import com.dxctraining.inventorymgt.supplier.exceptions.SupplierNotFoundException;
 
+
+@Transactional
 @Service
 public class SupplierServiceImpl implements ISupplierService {
 	@Autowired
 	private ISupplierDao dao;
 
 	@Override
-	public Supplier findById(String id) {
+	public Supplier findById(Integer id) {
 		Optional<Supplier> optional = dao.findById(id);
 		boolean exist = optional.isPresent();
 		if (!exist) {
@@ -27,21 +29,21 @@ public class SupplierServiceImpl implements ISupplierService {
 		return supplier;
 	}
 	
-	@Override
-	public List<Supplier> findByName(String name) {
-		List<Supplier> list=dao.findByName(name);
-		return list;
-		
-	}
 
 	@Override
 	public Supplier add(Supplier supplier) {
 		supplier = dao.save(supplier);
 		return supplier;
 	}
+	
+	@Override
+	public List<Supplier> findBySname(String sname){
+		List<Supplier> supplier=dao.findBySname(sname);
+		return supplier;
+	}
 
 	@Override
-	public void removeById(String id) {
+	public void removeById(Integer id) {
 		dao.deleteById(id);
 	}
 
